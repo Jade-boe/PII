@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Experiences";
+}
+
+<h2>Des expériences autour de moi</h2>
+
+<ul>
+    @{
+        DateTime dateDebut = Convert.ToDateTime(@ViewData["dateDebut"]);
+        DateTime dateFin = Convert.ToDateTime(@ViewData["dateFin"]);
+        string ville = Convert.ToString(@ViewData["ville"]);
+        string pays = Convert.ToString(@ViewData["pays"]);
+        //la recherche doit au moins contenir pays, date début et date fin
+        if (dateDebut == DateTime.MinValue || dateFin == DateTime.MinValue || pays == "")
+        {
+            <p>Veuillez indiquer au moins une date de début, une date de fin et un pays pour lancer la recherche.</p>
+        }
+        else
+        {
+            var experiences = Scrapper.ScrappingMethod(dateDebut, dateFin, ville, pays);
+            @foreach (Experience experience in experiences)
+            {
+                if (experience.Ville == ville || experience.Ville=="Partout en France")
+                {
+                    <li>@experience.Libelle : @experience.Ville</li> //peut être un lien vers la page de l'evenement ?
+                }    
+            //rendre ça plus joli
+            }
+        }
+    }
+</ul>

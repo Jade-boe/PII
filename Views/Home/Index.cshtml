@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form action="/Experiences/Recherche" method="get">
+        Pays :<br>
+        <input type="text" name="pays"><br>
+        Ville :<br>
+        <input type="text" name="ville"><br>
+        Date de début :<br>
+        <input type="datetime-local" name="dateDebut"><br>
+        Date de fin :<br>
+        <input type="datetime-local" name="dateFin"><br><br>
+        <input type="submit" id="submitId" value="submit" />
+    </form>
+</div>
